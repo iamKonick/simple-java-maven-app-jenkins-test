@@ -1,0 +1,37 @@
+# .github/workflows/build-java-application.yml
+name: Build Maven Java Application
+
+on:
+  workflow_run:
+    workflows: ["Monitor Self-Check"]
+    types:
+      - completed
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build-application:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'  # You can change to the required Java version
+
+      - name: Build the application with Maven
+        run: |
+          mvn clean install
+          
+      - name: Run unit tests
+        run: |
+          mvn test
+
+      - name: Final Echo
+        run: |
+          echo "Application Built Done"
