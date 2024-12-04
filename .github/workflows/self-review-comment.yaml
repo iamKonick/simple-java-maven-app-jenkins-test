@@ -1,5 +1,5 @@
 # .github/workflows/post-initial-comment.yml
-name: Post Initial Checklist
+name: Self Review Comment
 
 on:
   pull_request:
