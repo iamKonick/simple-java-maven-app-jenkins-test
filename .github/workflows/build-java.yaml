@@ -2,7 +2,7 @@ name: Compile and Test
 
 on:
   repository_dispatch:
-    types: [self-review-completed]
+    types: [Monitor Self-Check]
 
 jobs:
   compile-and-test:
